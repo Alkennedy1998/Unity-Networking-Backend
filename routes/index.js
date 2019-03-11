@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const ejs = require('ejs');
 
 
 /* GET home page. */
 
 
-router.get('/', (req, res) => res.render('index.ejs'));
+router.get('/', (req, res) => res.send({'Greeting1':'shaloam'}));
 
 /*
 router.get('/', function(req, res, next) {

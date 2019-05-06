@@ -9,7 +9,7 @@ const fs = require("fs");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var playerManager = require('./routes/gameManager')
 
 var app = express();
 
@@ -23,6 +23,7 @@ var jsonParser = bodyParser.json()
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/gameManager', playerManager);
 
 
 

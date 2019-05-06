@@ -28,12 +28,24 @@ app.use('/users', usersRouter);
 
 app.post('/test',jsonParser, function(req, res, next) {
  
-    console.log(req.body.testGreeting); 
+    console.log(req);
+    console.log(req.body.playerName); 
     res.send("Success");
     //res.send('respond with a resource');
   });
 
-
+  var counter = 0;
+  app.get('/data', function(req, res, next) {
+    counter+=1;
+    console.log("responded to /data with resource");
+    var testObj = {
+        cat: '22',
+        fish: 3,
+        john: "ayy"
+    }
+    testObj.fish = counter;
+    res.send(testObj);
+  });
 
 
 module.exports = app;

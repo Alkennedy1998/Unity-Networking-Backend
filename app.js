@@ -29,8 +29,8 @@ app.use('/gameManager', playerManager);
 
 app.post('/test',jsonParser, function(req, res, next) {
  
-    console.log(req);
-    console.log(req.body.playerName); 
+    console.log(req.body);
+    console.log(req.body.timeElapsed+2); 
     res.send("Success");
     //res.send('respond with a resource');
   });

@@ -6,4 +6,4 @@ if(port == null || port == ""){
     port = 80;
 }
 
-app.listen(port, () => console.log(`Image downloader listening on port ${port}!`))
+app.listen(port, () => console.log(`Unity server listening on port ${port}!`))

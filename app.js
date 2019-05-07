@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var jsonParser = bodyParser.json()
 
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/gameManager', playerManager);

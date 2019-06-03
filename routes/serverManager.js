@@ -46,6 +46,32 @@ router.get('/refresh', bodyParser.json(), function(req, res, next) {
 
 });
 
+var serverData ={
+    numOfPlayers = 0,
+    currentUniqueID = 1,
+    playerData = {}
+}
+router.get('/joinGame',bodyParser.json(),function(req,res,next)
+{
+    
+    var playerDataTemplate ={
+        ID = currentUniqueID,
+        xPosition:2.675,
+        yPosition:1.897,
+        zPosition:3.9567,
+        xRotation:10,
+        yRotation:20,
+        zRotation:30
+    }
+
+    serverData.playerData[currentUniqueID] = playerDataTemplate;
+
+    console.log("Player " + currentUniqueID + " joined the Game!");
+    res.send(currentUniqueID);
+    serverData.currentUniqueID+=1;
+    serverData.numberOfPlayers += 1;
+})
+
 router.get('/addPlayer', bodyParser.json(), function(req, res, next) {
     if(activeGame.player1 == "EMPTY"){
 
@@ -61,6 +87,18 @@ router.get('/addPlayer', bodyParser.json(), function(req, res, next) {
         console.log("Player 2 set");
 
     }
+});
+
+router.post('/update', bodyParser.json(), function(req, res, next) {
+    var playerID = res.body.playerID;
+
+    serverData.playerData[playerID].xPos = req.body.xPos;
+    serverData.playerData[playerID].xPos = req.body.xPos;
+    serverData.playerData[playerID].yPos = req.body.yPos;
+    serverData.playerData[playerID].zPos = req.body.zPos;
+    serverData.playerData[playerID].xRot = req.body.xRot;
+    serverData.playerData[playerID].yRot = req.body.yRot;
+    serverData.playerData[playerID].zRot = req.body.zRot;
 });
 
 router.post('/update', bodyParser.json(), function(req, res, next) {
